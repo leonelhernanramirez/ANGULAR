@@ -1,0 +1,16 @@
+<p>abm-alumnos works!</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let alumno of alumnos">
+        <td>{{ alumno.nombre | customPipe }}</td>
+        <td>{{ alumno.apellido | customPipe }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
