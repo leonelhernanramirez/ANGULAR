@@ -49,3 +49,25 @@ export class ListaAlumnosComponent {
     // Otros datos
   ];
 }
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AlumnosService {
+  private alumnos = [
+    { nombre: 'Juan', apellido: 'Perez' },
+    { nombre: 'Maria', apellido: 'Gomez' },
+    // Otros datos
+  ];
+
+  getAlumnos() {
+    return this.alumnos;
+  }
+
+  agregarAlumno(alumno) {
+    this.alumnos.push(alumno);
+  }
+
+  // Otros métodos según sea necesario
+}
