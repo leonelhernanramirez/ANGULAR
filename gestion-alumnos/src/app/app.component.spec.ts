@@ -1,29 +1,41 @@
-import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AbmAlumnosComponent } from './abm-alumnos.component';
 
-describe('AppComponent', () => {
+describe('AbmAlumnosComponent', () => {
+  let component: AbmAlumnosComponent;
+  let fixture: ComponentFixture<AbmAlumnosComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
-    }).compileComponents();
+      declarations: [ AbmAlumnosComponent ],
+      imports: [ ReactiveFormsModule ]
+    })
+    .compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have the 'gestion-alumnos' title`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('gestion-alumnos');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AbmAlumnosComponent);
+    component = fixture.componentInstance;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, gestion-alumnos');
   });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('form should be invalid when empty', () => {
+    expect(component.alumnoForm.valid).toBeFalsy();
+  });
+
+  it('form should be valid with correct input', () => {
+    const nombre = component.alumnoForm.controls['nombre'];
+    nombre.setValue('Juan');
+    const apellido = component.alumnoForm.controls['apellido'];
+    apellido.setValue('Perez');
+    expect(component.alumnoForm.valid).toBeTruthy();
+  });
+
+  // Agregar más pruebas según sea necesario
 });
+
